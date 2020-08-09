@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -26,7 +26,7 @@
 
 
 int ti_emv_start(TI_REAL const *options) {
-    (void)options;
+    options=options;
     return 1;
 }
 
@@ -36,7 +36,7 @@ int ti_emv(int size, TI_REAL const *const *inputs, TI_REAL const *options, TI_RE
     const TI_REAL *low = inputs[1];
     const TI_REAL *volume = inputs[2];
 
-    (void)options;
+    options=options;
 
     TI_REAL *output = outputs[0];
 

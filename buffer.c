@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -22,8 +22,8 @@
  */
 
 
-#include "indicators.h"
 #include "buffer.h"
+#include <stdlib.h>
 
 
 ti_buffer *ti_buffer_new(int size) {

@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -23,6 +23,8 @@
 
 #include "indicators.h"
 
+
+
 int ti_bbands_start(TI_REAL const *options) {
     return (int)options[0]-1;
 }
@@ -37,7 +39,7 @@ int ti_bbands(int size, TI_REAL const *const *inputs, TI_REAL const *options, TI
     const int period = (int)options[0];
 
     const TI_REAL stddev = options[1];
-    const TI_REAL scale = 1.0 / period;
+    const TI_REAL div = 1.0 / period;
 
     if (period < 1) return TI_INVALID_OPTION;
     if (size <= ti_bbands_start(options)) return TI_OKAY;
@@ -51,11 +53,8 @@ int ti_bbands(int size, TI_REAL const *const *inputs, TI_REAL const *options, TI
         sum2 += input[i] * input[i];
     }
 
-    TI_REAL sdSource = (sum2 * scale - (sum * scale) * (sum * scale));
-
-    TI_REAL sd = sqrt(sdSource);
-
-    *middle = sum * scale;
+    TI_REAL sd = sqrt(sum2 * div - (sum * div) * (sum * div));
+    *middle = sum * div;
     *lower++ = *middle - stddev * sd;
     *upper++ = *middle + stddev * sd;
     ++middle;
@@ -67,10 +66,8 @@ int ti_bbands(int size, TI_REAL const *const *inputs, TI_REAL const *options, TI
         sum -= input[i-period];
         sum2 -= input[i-period] * input[i-period];
 
-        sdSource = (sum2 * scale - (sum * scale) * (sum * scale));
-        
-        sd = sqrt(sdSource);
-        *middle = sum * scale;
+        sd = sqrt(sum2 * div - (sum * div) * (sum * div));
+        *middle = sum * div;
         *upper++ = *middle + stddev * sd;
         *lower++ = *middle - stddev * sd;
         ++middle;

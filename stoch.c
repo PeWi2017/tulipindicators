@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -23,6 +23,7 @@
 
 #include "indicators.h"
 #include "buffer.h"
+#include <stdio.h>
 
 
 int ti_stoch_start(TI_REAL const *options) {

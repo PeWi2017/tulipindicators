@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -27,7 +27,7 @@
 
 
 int ti_wad_start(TI_REAL const *options) {
-    (void)options;
+    options = options;
     return 1;
 }
 
@@ -37,7 +37,7 @@ int ti_wad(int size, TI_REAL const *const *inputs, TI_REAL const *options, TI_RE
     const TI_REAL *low = inputs[1];
     const TI_REAL *close = inputs[2];
 
-    (void)options;
+    options = options;
 
     if (size <= ti_wad_start(options)) return TI_OKAY;
 

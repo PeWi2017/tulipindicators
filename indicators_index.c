@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -25,8 +25,8 @@
 
 /*
  *
- * Version 0.8.1
- * Header Build 1482259567
+ * Version 0.8.0
+ * Header Build 1481831503
  *
  */
 
@@ -38,6 +38,7 @@
 
 
 #include "indicators.h"
+#include <string.h>
 
 
 

@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -35,7 +35,7 @@ int ti_var(int size, TI_REAL const * const *inputs, TI_REAL const *options, TI_R
     const int period = (int)options[0];
     TI_REAL *output = outputs[0];
 
-    const TI_REAL scale = 1.0 / period;
+    const TI_REAL div = 1.0 / period;
 
     if (period < 1) return TI_INVALID_OPTION;
     if (size <= ti_var_start(options)) return TI_OKAY;
@@ -49,7 +49,7 @@ int ti_var(int size, TI_REAL const * const *inputs, TI_REAL const *options, TI_R
         sum2 += input[i] * input[i];
     }
 
-    *output++ = sum2 * scale - (sum * scale) * (sum * scale);
+    *output++ = sum2 * div - (sum * div) * (sum * div);
 
     for (i = period; i < size; ++i) {
         sum += input[i];
@@ -58,7 +58,7 @@ int ti_var(int size, TI_REAL const * const *inputs, TI_REAL const *options, TI_R
         sum -= input[i-period];
         sum2 -= input[i-period] * input[i-period];
 
-        *output++ = sum2 * scale - (sum * scale) * (sum * scale);
+        *output++ = sum2 * div - (sum * div) * (sum * div);
     }
 
     assert(output - outputs[0] == size - ti_var_start(options));
