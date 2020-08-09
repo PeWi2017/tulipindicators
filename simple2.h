@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -32,7 +32,7 @@
 
 #define SIMPLE2(START, FUN, OP) \
 int START(TI_REAL const *options) { \
-    (void)options; \
+    options = options; \
     return 0; \
 } \
  \
@@ -41,7 +41,7 @@ int FUN(int size, TI_REAL const *const *inputs, TI_REAL const *options, TI_REAL 
     const TI_REAL *in1 = inputs[0]; \
     const TI_REAL *in2 = inputs[1]; \
  \
-    (void)options; \
+    options = options; \
  \
     TI_REAL *output = outputs[0]; \
  \

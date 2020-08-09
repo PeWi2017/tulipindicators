@@ -1,7 +1,7 @@
 /*
  * Tulip Indicators
  * https://tulipindicators.org/
- * Copyright (c) 2010-2017 Tulip Charts LLC
+ * Copyright (c) 2010-2016 Tulip Charts LLC
  * Lewis Van Winkle (LV@tulipcharts.org)
  *
  * This file is part of Tulip Indicators.
@@ -30,6 +30,8 @@
  * (e.g. sqrt, sin)
  */
 
+#include <math.h>
+
 /* Fallback */
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -38,7 +40,7 @@
 
 #define SIMPLE1(START, FUN, OP) \
 int START(TI_REAL const *options) { \
-    (void)options; \
+    options = options; \
     return 0; \
 } \
  \
@@ -46,7 +48,7 @@ int START(TI_REAL const *options) { \
 int FUN(int size, TI_REAL const *const *inputs, TI_REAL const *options, TI_REAL *const *outputs) { \
     const TI_REAL *in1 = inputs[0]; \
  \
-    (void)options; \
+    options = options; \
  \
     TI_REAL *output = outputs[0]; \
  \
