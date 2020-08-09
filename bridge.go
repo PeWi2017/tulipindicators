@@ -40,7 +40,8 @@ func indicator(
 
 	outputSizeDiff := C.bridgeStartFunction(startFunc, castOptions)
 
-	outputSize := len(inputs[0]) - int(outputSizeDiff)
+	inputSize := len(inputs[0])
+    outputSize := len(inputs[0]) - int(outputSizeDiff)
 
 	if outputSize < 1 {
 		return nil, fmt.Errorf("insufficient inputs")
@@ -55,7 +56,7 @@ func indicator(
 	castOutputs, outputs := castToC2dDoubleArray(outputs)
 	defer freeC2dDoubleArray(castOutputs, len(outputs))
 
-	castOutputSize := C.int(outputSize)
+	castOutputSize := C.int(inputSize)
 
 	doResponse, doError := C.bridgeIndicatorFunction(
 		indicatorFunc,
